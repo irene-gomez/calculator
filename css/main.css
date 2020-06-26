@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Muli:wght@400;600&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: normal; }
+
+button {
+  border: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: #3e3e3e;
+  background-color: transparent; }
+
+body {
+  font-family: "Muli", sans-serif;
+  font-size: 32px;
+  font-weight: 600; }
+
+.calculator__container {
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 120px 1fr; }
+
+.calculator__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); }
+  .calculator__keys button {
+    border: 1px solid #c7c7c7; }
+
+.keys {
+  padding: 1rem; }
+  .keys--highlight {
+    color: #D58400;
+    font-weight: 600; }

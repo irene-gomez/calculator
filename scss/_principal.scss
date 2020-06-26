@@ -1,0 +1,16 @@
+.calculator {
+    &__container {
+        height: 100vh;
+        display: grid;
+        grid-template-rows: 120px 1fr;
+    }
+
+    &__keys {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        & button {
+            border: 1px solid $color-primary-light;
+        }
+    }
+}
