@@ -2,15 +2,18 @@
     &__container {
         height: 100vh;
         display: grid;
-        grid-template-rows: 120px 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: minmax(155px, auto) repeat(4, 1fr);
     }
 
-    &__keys {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-
-        & button {
-            border: 1px solid $color-primary-light;
-        }
+    &__display-output {
+        background-color: $color-primary-medium-dark;
+        grid-column: 1 / -1;
+        color: $color-primary-light;
+        font-size: 4rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding: 15px 20px;
     }
 }
