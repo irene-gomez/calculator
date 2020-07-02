@@ -3,6 +3,7 @@
 class Calculator {
     currentOperandText: any;
     currentOperand: any;
+    operation: any;
 
     constructor(currentOperandElement: any) {
         this.currentOperandText = currentOperandElement;
@@ -11,10 +12,24 @@ class Calculator {
 
     clearDisplay() {
         this.currentOperand = '';
+        this.operation = undefined;
     }
 
     concatNumber(number: number) {
         this.currentOperand = this.currentOperand + number;
+    }
+
+    chooseOperation(operation: string) {
+        if(this.currentOperand !== '') {
+            this.calculate();
+        }
+        this.operation = operation;
+        this.currentOperand = this.currentOperand + this.operation;
+    }
+
+    calculate() {
+        
+        
     }
 
     updateDisplay() {
@@ -36,6 +51,14 @@ numberButtons.forEach(element => {
         calculator.updateDisplay();
     })
 });
+
+operationButtons.forEach(element => {
+    element.addEventListener('click', () => {
+        calculator.chooseOperation(element.innerHTML);
+        calculator.updateDisplay();
+    })
+});
+
 
 // allClearButton.addEventListener('click', button => {
 //     calculator.clearDisplay();

@@ -6,9 +6,19 @@ class Calculator {
     }
     clearDisplay() {
         this.currentOperand = '';
+        this.operation = undefined;
     }
     concatNumber(number) {
         this.currentOperand = this.currentOperand + number;
+    }
+    chooseOperation(operation) {
+        if (this.currentOperand !== '') {
+            this.calculate();
+        }
+        this.operation = operation;
+        this.currentOperand = this.currentOperand + this.operation;
+    }
+    calculate() {
     }
     updateDisplay() {
         this.currentOperandText.innerText = this.currentOperand;
@@ -23,6 +33,12 @@ const calculator = new Calculator(currentOperandElement);
 numberButtons.forEach(element => {
     element.addEventListener('click', () => {
         calculator.concatNumber(parseInt(element.innerHTML));
+        calculator.updateDisplay();
+    });
+});
+operationButtons.forEach(element => {
+    element.addEventListener('click', () => {
+        calculator.chooseOperation(element.innerHTML);
         calculator.updateDisplay();
     });
 });
