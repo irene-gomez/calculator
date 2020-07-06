@@ -15,16 +15,33 @@ button {
   background-color: transparent;
   outline: none; }
 
+@media all and (min-width: 675px) {
+  html {
+    height: 100%; } }
+
 body {
   font-family: "Muli", sans-serif;
   font-size: 18px;
   font-weight: 600; }
+  @media all and (min-width: 675px) {
+    body {
+      height: 100%;
+      background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%); } }
 
 .calculator__container {
   height: 100vh;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: minmax(155px, auto) repeat(4, 1fr); }
+  @media all and (min-width: 675px) {
+    .calculator__container {
+      max-height: 80vh;
+      min-width: 450px;
+      grid-template-rows: minmax(135px, auto) repeat(4, 1fr);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); } }
 
 .calculator__display-output {
   background-color: #4C4C4C;

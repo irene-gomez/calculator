@@ -15,9 +15,19 @@ button {
     background-color: transparent;
     outline: none;
 }
+html {
+    @media all and (min-width: $desktop) {
+        height: 100%;
+    }
+}
 
 body {
     font-family: $fontFamily;
     font-size: 18px;
     font-weight: $principalFontWeight;
+
+    @media all and (min-width: $desktop) {
+        height: 100%;
+        background-image: linear-gradient(120deg, #89f7fe 0%, #66a6ff 100%);
+    }
 }

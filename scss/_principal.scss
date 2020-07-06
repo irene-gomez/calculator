@@ -4,6 +4,13 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: minmax(155px, auto) repeat(4, 1fr);
+
+        @media all and (min-width: $desktop) {
+            max-height: 80vh;
+            min-width: 450px;
+            grid-template-rows: minmax(135px, auto) repeat(4, 1fr);
+            @include absoluteCentered();
+        }
     }
 
     &__display-output {
