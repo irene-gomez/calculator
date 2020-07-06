@@ -18,6 +18,8 @@ class Calculator {
     }
 
     concatNumber(number: number) {
+        if(number === 0 && this.currentOperand === '') return;
+        
         this.currentOperand = this.currentOperand + number;
     }
 

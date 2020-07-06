@@ -10,6 +10,8 @@ class Calculator {
         this.operation = undefined;
     }
     concatNumber(number) {
+        if (number === 0 && this.currentOperand === '')
+            return;
         this.currentOperand = this.currentOperand + number;
     }
     chooseOperation(operation) {
