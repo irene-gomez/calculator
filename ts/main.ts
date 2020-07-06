@@ -3,6 +3,7 @@
 class Calculator {
     currentOperandText: any;
     currentOperand: any;
+    previousOperand: any;
     operation: any;
 
     constructor(currentOperandElement: any) {
@@ -12,6 +13,7 @@ class Calculator {
 
     clearDisplay() {
         this.currentOperand = '';
+        this.previousOperand = '';
         this.operation = undefined;
     }
 
@@ -20,20 +22,47 @@ class Calculator {
     }
 
     chooseOperation(operation: string) {
-        if(this.currentOperand !== '') {
-            this.calculate();
+        if(this.previousOperand !== '') {
+            this.calculateOperation();
         }
         this.operation = operation;
-        this.currentOperand = this.currentOperand + this.operation;
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = '';
     }
 
-    calculate() {
+    calculateOperation() {
+        let result: number;
+        const previous: number = parseInt(this.previousOperand);
+        const current: number = parseInt(this.currentOperand);
+
+        switch (this.operation) {
+            case '+':
+                result = previous + current;
+                break;
+            case '-':
+                result = previous - current;
+                break;
+            case '×':
+                result = previous * current;
+                break;
+            case '÷':
+                result = previous / current;
+                break;
+            default:
+                return;
+        }
         
-        
+        this.currentOperand = result;
+        this.previousOperand = '';
+        this.operation = undefined;
     }
 
     updateDisplay() {
         this.currentOperandText.innerText = this.currentOperand;
+
+        if(this.operation !== undefined) {
+            this.currentOperandText.innerText = `${this.previousOperand} ${this.operation} ${this.currentOperand}`;
+        }
     }
 }
 
@@ -59,8 +88,12 @@ operationButtons.forEach(element => {
     })
 });
 
+equalButton.addEventListener('click', () => {
+    calculator.calculateOperation();
+    calculator.updateDisplay();
+});
 
-// allClearButton.addEventListener('click', button => {
-//     calculator.clearDisplay();
-//     calculator.updateDisplay();
-// });
+allClearButton.addEventListener('click', () => {
+    calculator.clearDisplay();
+    calculator.updateDisplay();
+});
